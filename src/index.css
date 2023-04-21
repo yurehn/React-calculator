@@ -1,69 +1,88 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+* {
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  margin: 0px;
+
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+
+  background-color: hsl(222, 26%, 31%);
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.container {
+  width: 375px;
+  height: 668px;
+  background-color: red;
+  padding: 24px;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+.PanelTheme{
+  height: 80px;
+}
+
+.input {
+  font-size: 32px;
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 700;
+
+  font-size: 39px;
+  text-align: right;
+
+  width: 100%;
+  height: 88px;
+
+  padding: 23px;
+  margin: 0px 0px 24px 0px;
+
+  outline: none;
+  border: none;
+  border-radius: 9px;
+
+  background-color: hsl(224, 36%, 15%);
+  color: hsl(0, 0%, 100%);
+}
+
+.wrapperButtons {
+  width: 100%;
+  height: 420px;
+
+  padding: 23px;
+  border-radius: 9px;
+
+  background-color: hsl(223, 31%, 20%);
+}
+
+.numberButton {
+  width: 60px;
+  height: 60px;
+
+  padding: 20px 0px;
+
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 4px 0px 0px hsl(28, 16%, 65%);
+  background-color: hsl(30, 25%, 89%);
+
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.numberButton span {
+  font-size: 32px;
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 700;
+
+  color: hsl(221, 14%, 31%);
+}
+
+.numberButton:active {
+  background-color: hsl(28, 35%, 92%);
+  transition: background-color 0.1s ease;
+
+  transform: translateY(1px);
+  box-shadow: 0px 3px 0px 0px hsl(28, 16%, 65%);
 }
