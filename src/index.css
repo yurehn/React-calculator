@@ -2,33 +2,25 @@
 
   /* Font */
   --Font-size-numbers: 32px;
+  --Font-size-other-key: 19px;
   --Family-League-Spartan: 'League Spartan', sans-serif;
 
   --Weight-1: 700;
 
   /* Backgrounds */
-  --Very-dark-desaturated-blue-1: hsl(222, 26%, 31%);
-  /* main background */
-  --Very-dark-desaturated-blue-2: hsl(223, 31%, 20%);
-  /* toggle background, keypad background */
-  --Very-dark-desaturated-blue-3: hsl(224, 36%, 15%);
-  /* screen background */
+  --Very-dark-desaturated-blue-1: hsl(222, 26%, 31%); /* main background */
+  --Very-dark-desaturated-blue-2: hsl(223, 31%, 20%); /* toggle background, keypad background */
+  --Very-dark-desaturated-blue-3: hsl(224, 36%, 15%); /* screen background */
 
   /* Keys */
-  --Desaturated-dark-blue-1: hsl(225, 21%, 49%);
-  /* key background */
-  --Desaturated-dark-blue-2: hsl(224, 28%, 35%);
-  /* key shadow */
+  --Desaturated-dark-blue-1: hsl(225, 21%, 49%); /* key background */
+  --Desaturated-dark-blue-2: hsl(224, 28%, 35%); /* key shadow */
 
-  --Red: hsl(6, 63%, 50%);
-  /* key background, toggle */
-  --Dark-red: hsl(6, 70%, 34%);
-  /* key shadow */
+  --Red: hsl(6, 63%, 50%); /* key background, toggle */
+  --Dark-red: hsl(6, 70%, 34%); /* key shadow */
 
-  --Light-grayish-orange: hsl(30, 25%, 89%);
-  /* key background */
-  --Grayish-orange: hsl(28, 16%, 65%);
-  /* key shadow */
+  --Light-grayish-orange: hsl(30, 25%, 89%); /* key background */
+  --Grayish-orange: hsl(28, 16%, 65%); /* key shadow */
 
   /* Text */
   --Very-dark-grayish-blue: hsl(221, 14%, 31%);
@@ -59,7 +51,7 @@ body {
 .container {
   width: 375px;
   height: 668px;
-  background-color: red;
+  /* background-color: red; */
   padding: 24px;
 }
 
@@ -84,7 +76,7 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-
+  
   text-transform: uppercase;
 }
 
@@ -130,11 +122,11 @@ body {
   border-radius: 9px;
 }
 
-.Button {
+/* ----- BASE BUTTON -----*/
+.buttonBase {
   font-family: var(--Family-League-Spartan);
   font-weight: var(--Weight-1);
 
-  width: 60px;
   height: 60px;
 
   padding: 20px 0px;
@@ -145,12 +137,22 @@ body {
   cursor: pointer;
 }
 
-.Button:active {
+.buttonBase:active {
   transition: background-color 0.1s ease;
   transform: translateY(1px);
 }
 
-.ButtonLight {
+.buttonWidth-1 {
+  width: 60px;
+}
+
+.buttonWidth-2 {
+  width: 133px;
+}
+
+
+/* ----- BUTTON LIGHT-----*/
+.buttonLight {
   font-size: var(--Font-size-numbers);
 
   background-color: var(--Light-grayish-orange);
@@ -159,7 +161,46 @@ body {
   box-shadow: var(--Box-Shadow-Button-Position-1) var(--Grayish-orange);
 }
 
-.ButtonLight:active {
+.buttonLight:hover {
+  background-color: hsl(32, 79%, 96%);
+}
+
+.buttonLight:active {
   box-shadow: var(--Box-Shadow-Button-Position-2) var(--Grayish-orange);
-  background-color: hsl(28, 35%, 92%);
+}
+
+
+/* ----- BUTTON DARK BLUE-----*/
+.buttonDarkBlue {
+  font-size: var(--Font-size-other-key);
+
+  background-color: var(--Desaturated-dark-blue-1);
+  color: var(--White);
+
+  box-shadow: var(--Box-Shadow-Button-Position-1) var(--Desaturated-dark-blue-2);
+}
+
+.buttonDarkBlue:hover {
+  background-color: hsl(226, 28%, 60%);
+}
+
+.buttonDarkBlue:active {
+  box-shadow: var(--Box-Shadow-Button-Position-2) var(--Desaturated-dark-blue-2);
+}
+
+
+/* ----- BUTTON DARK RED-----*/
+.buttonDarkRed {
+  font-size: var(--Font-size-other-key);
+
+  background-color: var(--Red);
+  color: var(--White);
+
+  box-shadow: var(--Box-Shadow-Button-Position-1) var(--Dark-red);
+}
+.buttonDarkRed:hover {
+  background-color: hsl(6, 56%, 54%);
+}
+.buttonDarkRed:active {
+  box-shadow: var(--Box-Shadow-Button-Position-2) var(--Dark-red);
 }

@@ -1,13 +1,27 @@
+import { useState } from "react";
 import "./index.css"
 
 const ToggleSwitch = () => {
+  const [checked, setChecked] = useState('left');
+
+  const handleClick = () => {
+    if (checked === 'left') {
+      setChecked('center')
+    } else if (checked === 'center') {
+      setChecked('right')
+    } else if (checked === 'right') {
+      setChecked('left')
+    }
+    
+  }
+  
   return (
-    <div className="cl-toggle-switch">
-      <label className="cl-switch">
-        <input type="checkbox" />
-          <span></span>
-      </label>
-    </div>
+    <input
+      className= {`switch ${checked}`}
+      type="checkbox"
+      checked={checked}
+      onChange={handleClick}
+    />
   )
 }
 
