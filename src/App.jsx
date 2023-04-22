@@ -1,27 +1,37 @@
-// import { useState } from "react"
 import "./index.css"
+import ToggleSwitch from './component/ToggleSwitch/ToggleSwitch'
 
-// const calculate = (value) => {
-//   return value
-// }
 
+const buttonContent = [
+  '7', '8', '9', 'DEL',
+  '4', '5', '6', '+',
+  '1', '2', '3', '-',
+  '.', '0', '/', 'x',
+  'RESET', '='
+]
 
 function App() {
-  // const [value, setValue] = useState('')
-
+  
   return (
     <div className="container">
-      <div className="PanelTheme">
+      <div className="panelTheme">
         <span>calc</span>
-        <div>
+        <div className="wrapperToggle">
           <span>Theme</span>
+          <ToggleSwitch />
         </div>
       </div>
       <input className="input" type="text" disabled="disabled" value='399,981' />
       <div className="wrapperButtons">
-        <button className="numberButton">
-          <span>7</span>
-        </button>
+        {
+          buttonContent.map((value) => {
+            return (
+              <button key={value} className="Button ButtonLight">
+                <span>{value}</span>
+              </button>
+            )
+          })
+        }
       </div>
     </div>
   )
