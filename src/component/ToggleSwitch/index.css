@@ -1,52 +1,96 @@
-.switch {
-  position: relative;
+:root {
+
+  /* Font */
+  --Font-size-numbers: 32px;
+  --Font-size-other-key: 19px;
+  --Family-League-Spartan: 'League Spartan', sans-serif;
+
+  --Weight-1: 700;
+  --Weight-2: 600;
+
+  /* Backgrounds */
+  --Very-dark-desaturated-blue-2: hsl(223, 31%, 20%); /* toggle background, keypad background */
+
+  --Red: hsl(6, 63%, 50%); /* key background, toggle */
+
+  /* Text */
+  --Very-dark-grayish-blue: hsl(221, 14%, 31%);
+  --White: hsl(0, 0%, 100%);
+}
+
+
+.wrapperToggleSwitch {
+  display: block;
+}
+
+.infoSwitch {
+  width: 100%;
+  padding-bottom: 5px;
+
+  display: flex;
+}
+
+.infoSwitch span{
+  font-family:var(--Family-League-Spartan);
+  font-weight: var(--Weight-2);
+  font-size: 11px;
+  color: var(--White);
 
   margin: 0px;
 
-  height: 26px;
-  width: 70px;
+  flex: 1;
+
+  text-align: center;
+}
+
+.toggleSwitch {
+  padding: 0px;
+  margin: 0px;
+
+  height: auto;
+  width: auto;
+
+  border-radius: 25px;
+  list-style-type: none;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+  background-color: var(--Very-dark-desaturated-blue-2);
+}
+
+.toggleSwitch li {
+  height: 25px;
+  width: 23px;
+
+  position: relative;
+}
+
+.toggleSwitch input {
+  margin: 0px;
+
+  height: 100%;
+  width: 100%;
 
   cursor: pointer;
   appearance: none;
-
-  border-radius: 20px;
-  background-color: hsl(223, 31%, 20%);
-
 }
 
-.switch::before {
-  position: absolute;
+.toggleSwitch input:checked::before{
   content: "";
-  
-  display: block;
-  height: 15px;
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
   width: 15px;
+  height: 15px;
 
-  left: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto 5px auto 5px;
-
-  border-radius: 50px;
-  background-color: hsl(6, 63%, 50%);
-
-  transition: all .3s ease;
-}
-
-.switch:checked::before {
-  left: 45px;
-}
-
-.switch.left:checked::before {
-  left: 0;
-}
-
-.switch.center:checked::before {
-  left: 0;
-  right: 0;
-  margin: auto;
-}
-
-.switch.right:checked::before {
-  left: 45px;
+  border-radius: 50%;
+  background-color: var(--Red);
 }

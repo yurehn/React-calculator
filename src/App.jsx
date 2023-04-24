@@ -16,26 +16,39 @@ const buttonContent = [
   ['RESET', buttonDarkBlue_large], ['=', buttonDarkRed]
 ]
 
-// const calculate = (value) => {
-//   return value
-// }
+const operators = ['+', '-', 'x', '/']
+
+
+
+const formatNumber = (numberStr) => {
+  
+  const [left, right] = numberStr.toString().split('.')
+  const numberWithOutDot = left.replace(/,/g, '')
+  const formattedLeft = numberWithOutDot.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  return right ? `${formattedLeft}.${right}` : formattedLeft
+}
+
+
 
 function App() {
   const [inputValue, setInputValue] = useState('')
 
   const handleClick = (value) => {
-
+    // isNaN
     const lastValue = inputValue.slice(-1)
     const lastNumber = inputValue.split(/[-+x/]/).pop()
+    
 
     if (!inputValue && ['+', '-', 'x', '/', '=', '.', 'DEL', 'RESET'].includes(value)) {
       return
     }
 
     if (value === '=') {
-      if (!['+', '-', 'x', '/'].includes(lastValue)) {
+      if (!operators.includes(lastValue)) {
         try {
-          setInputValue(eval(inputValue.replaceAll('x', '*')).toString())
+          const formatStr = eval(inputValue.replaceAll('x', '*').replaceAll(',', '')).toString()
+          setInputValue(formatNumber(formatStr))
+
         } catch (error) {
           setInputValue('error')
         }
@@ -44,6 +57,10 @@ function App() {
     }
 
     if (value === 'DEL') {
+      if(!isNaN(lastValue) && lastNumber.length > 4) {
+        setInputValue(inputValue.slice(0, -lastNumber.length) + formatNumber(lastNumber.slice(0, -1)))
+        return
+      }
       setInputValue(inputValue.slice(0, -1))
       return
     }
@@ -53,19 +70,28 @@ function App() {
       return
     }
 
-    if (['+', '-', 'x', '/'].includes(value) && ['+', '-', 'x', '/'].includes(lastValue)) {
+    if (operators.includes(value) && operators.includes(lastValue)) {
       setInputValue(inputValue.slice(0, -1) + value)
       return
     }
 
-    if ((lastValue === '.' && ['+', '-', 'x', '/'].includes(value)) ||
-      (['+', '-', 'x', '/'].includes(lastValue) && value === '.') ||
-      (value === '.' && lastNumber.includes('.'))) {
+    if ((value === '.' && lastNumber.includes('.')) || (lastValue === '.' && operators.includes(value)) ||
+      (operators.includes(lastValue) && value === '.')) {
       return
     }
 
+
+    if (value !== '.' && !operators.includes(lastValue) && !operators.includes(value)) {
+      const newNumber = formatNumber(lastNumber+value)
+      const strWithOutLastNumber = inputValue.slice(0, -lastNumber.length)
+      setInputValue(strWithOutLastNumber + newNumber)
+
+      return
+    }
+    
     setInputValue(inputValue + value)
   }
+
 
   return (
     <div className="container">
